@@ -13,4 +13,14 @@
         <servlet-name>userServlet</servlet-name>
         <url-pattern>/users</url-pattern>
     </servlet-mapping>
+
+    <servlet>
+        <servlet-name>processServlet</servlet-name>
+        <servlet-class>com.ep.proj.web.ProcessServlet</servlet-class>
+        <load-on-startup>0</load-on-startup>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>processServlet</servlet-name>
+        <url-pattern>/process</url-pattern>
+    </servlet-mapping>
 </web-app>
