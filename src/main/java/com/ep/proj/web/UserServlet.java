@@ -12,6 +12,12 @@ public class UserServlet extends HttpServlet {
     private UserController userController;
 
     @Override
+    public void init() throws ServletException {
+        super.init();
+        userController = new UserController();
+    }
+
+    @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         request.setAttribute("users", userController.getAll());
         request.getRequestDispatcher("/users.jsp").forward(request, response);

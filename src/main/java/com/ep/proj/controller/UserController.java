@@ -10,6 +10,10 @@ import java.util.List;
 public class UserController {
     private final UserRepository repository;
 
+    public UserController() {
+        this.repository = new InMemoryUserRepository();
+    }
+
     public UserController(UserRepository repository) {
         this.repository = repository;
     }
