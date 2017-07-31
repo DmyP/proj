@@ -7,6 +7,55 @@
     <groupId>com.ep</groupId>
     <artifactId>proj</artifactId>
     <version>1.0-SNAPSHOT</version>
+    <name>proj</name>
+    <packaging>war</packaging>
 
+    <properties>
+
+        <!-- General -->
+        <java.version>1.8</java.version>
+        <maven.compiler.source>1.8</maven.compiler.source>
+        <maven.compiler.target>1.8</maven.compiler.target>
+        <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+        <project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
+
+        <!-- Tests -->
+        <junit.version>4.12</junit.version>
+
+        <!-- DB -->
+        <postgresql.version>42.1.3</postgresql.version>
+
+    </properties>
+
+
+    <dependencies>
+
+        <!-- Web servlets -->
+        <dependency>
+            <groupId>javax.servlet</groupId>
+            <artifactId>javax.servlet-api</artifactId>
+            <version>3.1.0</version>
+        </dependency>
+        <dependency>
+            <groupId>javax.servlet</groupId>
+            <artifactId>jstl</artifactId>
+            <version>1.2</version>
+        </dependency>
+
+        <!-- Test -->
+        <dependency>
+            <groupId>junit</groupId>
+            <artifactId>junit</artifactId>
+            <version>${junit.version}</version>
+            <scope>test</scope>
+        </dependency>
+
+        <!--DataBase-->
+        <dependency>
+            <groupId>org.postgresql</groupId>
+            <artifactId>postgresql</artifactId>
+            <version>${postgresql.version}</version>
+        </dependency>
+    </dependencies>
 
 </project>
