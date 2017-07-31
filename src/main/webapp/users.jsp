@@ -4,11 +4,13 @@
 <html>
 <head>
     <title>User list</title>
+    <link rel="stylesheet" href="style.css">
 </head>
 <body>
 <section>
     <h3><a href="index.html">Home</a></h3>
     <h2>User list</h2>
+    <a href="users?action=create">Add User</a>
     <hr/>
     <table border="1" cellpadding="8" cellspacing="0">
         <thead>
@@ -21,6 +23,7 @@
             <th>position</th>
             <th>enabled</th>
             <th>busyUntil</th>
+            <th colspan="2">Action</th>
         </tr>
         </thead>
         <c:forEach items="${users}" var="user">
@@ -34,6 +37,8 @@
                     <td>${user.position}</td>
                     <td>${user.enabled}</td>
                     <td>${user.busyUntil}</td>
+                    <td><a href="users?action=update&id=${user.id}&roles=">Update</a></td>
+                    <td><a href="users?action=delete&id=${user.id}">Delete</a></td>
                 </tr>
         </c:forEach>
     </table>
