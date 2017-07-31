@@ -1,8 +1,8 @@
 package com.ep.proj.model;
 
-public class BaseEntity {
-    protected Integer id;
-    protected String name;
+abstract class BaseEntity {
+    private Integer id;
+    private String name;
 
     BaseEntity(Integer id, String name) {
         this.id = id;
