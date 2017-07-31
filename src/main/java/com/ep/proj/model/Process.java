@@ -1,9 +1,9 @@
 package com.ep.proj.model;
 
-public class Job extends BaseEntity{
+public class Process extends BaseEntity{
     private Position[] positions;
 
-    public Job(Integer id, String name, Position[] positions) {
+    public Process(Integer id, String name, Position[] positions) {
         super(id, name);
         this.positions = positions;
     }

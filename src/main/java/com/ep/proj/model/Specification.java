@@ -2,18 +2,18 @@ package com.ep.proj.model;
 
 
 public class Specification extends BaseEntity{
-    private Job[] jobs;
+    private Process[] processes;
 
-    public Specification(Integer id, String name, Job[] jobs) {
+    public Specification(Integer id, String name, Process[] processes) {
         super(id, name);
-        this.jobs = jobs;
+        this.processes = processes;
     }
 
-    public Job[] getJobs() {
-        return jobs;
+    public Process[] getProcesses() {
+        return processes;
     }
 
-    public void setJobs(Job[] jobs) {
-        this.jobs = jobs;
+    public void setProcesses(Process[] processes) {
+        this.processes = processes;
     }
 }

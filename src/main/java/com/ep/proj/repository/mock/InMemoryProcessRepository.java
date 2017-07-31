@@ -1,7 +1,7 @@
 package com.ep.proj.repository.mock;
 
-import com.ep.proj.model.Job;
-import com.ep.proj.repository.JobRepository;
+import com.ep.proj.model.Process;
+import com.ep.proj.repository.ProcessRepository;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -9,22 +9,22 @@ import java.util.Map;
 import java.util.concurrent.ConcurrentHashMap;
 import java.util.concurrent.atomic.AtomicInteger;
 
-public class InMemoryJobRepository implements JobRepository{
-    private Map<Integer, Job> repository = new ConcurrentHashMap<>();
+public class InMemoryProcessRepository implements ProcessRepository {
+    private Map<Integer, Process> repository = new ConcurrentHashMap<>();
     private AtomicInteger counter = new AtomicInteger();
 
     {
-        MockDB.JOB_LIST.forEach(this::save);
+        MockDB.PROCESS_LIST.forEach(this::save);
         counter.set(repository.size());
     }
 
     @Override
-    public Job save(Job job) {
-        if (job.isNew()) {
-            job.setId(counter.incrementAndGet());
+    public Process save(Process process) {
+        if (process.isNew()) {
+            process.setId(counter.incrementAndGet());
         }
-        repository.put(job.getId(), job);
-        return job;
+        repository.put(process.getId(), process);
+        return process;
     }
 
     @Override
@@ -33,12 +33,12 @@ public class InMemoryJobRepository implements JobRepository{
     }
 
     @Override
-    public Job get(int id) {
+    public Process get(int id) {
         return repository.get(id);
     }
 
     @Override
-    public List<Job> getAll() {
+    public List<Process> getAll() {
         return new ArrayList<>(repository.values());
     }
 }

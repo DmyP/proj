@@ -1,6 +1,8 @@
 package com.ep.proj.repository.mock;
 
 import com.ep.proj.model.*;
+import com.ep.proj.model.Process;
+
 import java.time.LocalDate;
 import java.util.Arrays;
 import java.util.List;
@@ -20,20 +22,20 @@ class MockDB {
         new User(11, "qa", "qa", "qa@projep.com", Role.QA, Position.QA, false, LocalDate.now())
     );
 
-    static final List<Job> JOB_LIST = Arrays.asList(
-        new Job(1, "Requirements Analysis", new Position[]{Position.PM}),
-        new Job(2, "Architecture design", new Position[]{Position.SENIOR}),
-        new Job(3, "DB development", new Position[]{Position.SENIOR, Position.JUNIOR}),
-        new Job(4, "Backend development", new Position[]{Position.SENIOR, Position.MIDDLE, Position.JUNIOR}),
-        new Job(5, "Frontend development", new Position[]{Position.MIDDLE, Position.JUNIOR}),
-        new Job(6, "Testing", new Position[]{Position.QA})
+    static final List<Process> PROCESS_LIST = Arrays.asList(
+        new Process(1, "Requirements Analysis", new Position[]{Position.PM}),
+        new Process(2, "Architecture design", new Position[]{Position.SENIOR}),
+        new Process(3, "DB development", new Position[]{Position.SENIOR, Position.JUNIOR}),
+        new Process(4, "Backend development", new Position[]{Position.SENIOR, Position.MIDDLE, Position.JUNIOR}),
+        new Process(5, "Frontend development", new Position[]{Position.MIDDLE, Position.JUNIOR}),
+        new Process(6, "Testing", new Position[]{Position.QA})
     );
 
     static final List<Specification> SPECIFICATION_LIST = Arrays.asList(
-        new Specification(1, "Users DB", new Job[]{JOB_LIST.get(0), JOB_LIST.get(2), JOB_LIST.get(5)}),
-        new Specification(2, "Corporate site", new Job[]{JOB_LIST.get(0), JOB_LIST.get(1), JOB_LIST.get(4), JOB_LIST.get(5)}),
-        new Specification(3, "Internet shop", new Job[]{JOB_LIST.get(0), JOB_LIST.get(1), JOB_LIST.get(2), JOB_LIST.get(4), JOB_LIST.get(5)}),
-        new Specification(4, "Billing system", new Job[]{JOB_LIST.get(0), JOB_LIST.get(1), JOB_LIST.get(2), JOB_LIST.get(3), JOB_LIST.get(4), JOB_LIST.get(5)})
+        new Specification(1, "Users DB", new Process[]{PROCESS_LIST.get(0), PROCESS_LIST.get(2), PROCESS_LIST.get(5)}),
+        new Specification(2, "Corporate site", new Process[]{PROCESS_LIST.get(0), PROCESS_LIST.get(1), PROCESS_LIST.get(4), PROCESS_LIST.get(5)}),
+        new Specification(3, "Internet shop", new Process[]{PROCESS_LIST.get(0), PROCESS_LIST.get(1), PROCESS_LIST.get(2), PROCESS_LIST.get(4), PROCESS_LIST.get(5)}),
+        new Specification(4, "Billing system", new Process[]{PROCESS_LIST.get(0), PROCESS_LIST.get(1), PROCESS_LIST.get(2), PROCESS_LIST.get(3), PROCESS_LIST.get(4), PROCESS_LIST.get(5)})
     );
 
     static final List<Project> PROJECT_LIST= Arrays.asList(
