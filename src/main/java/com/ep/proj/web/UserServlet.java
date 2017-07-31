@@ -4,6 +4,7 @@ import com.ep.proj.controller.UserController;
 import com.ep.proj.model.Position;
 import com.ep.proj.model.Role;
 import com.ep.proj.model.User;
+import org.slf4j.Logger;
 
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
@@ -12,8 +13,11 @@ import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 import java.time.LocalDate;
 
+import static org.slf4j.LoggerFactory.getLogger;
+
 public class UserServlet extends HttpServlet {
     private UserController userController;
+    private static final Logger log = getLogger(UserServlet.class);
 
     @Override
     public void init() throws ServletException {
@@ -23,6 +27,8 @@ public class UserServlet extends HttpServlet {
 
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+        log.debug("GET redirect to users");
+
         String action = request.getParameter("action");
         switch (action == null ? "all" : action) {
             case "delete":
@@ -49,6 +55,8 @@ public class UserServlet extends HttpServlet {
 
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+        log.debug("POST redirect to users");
+
         request.setCharacterEncoding("UTF-8");
         String id = request.getParameter("id");
         User user = new User(id.isEmpty() ? null : Integer.valueOf(id),

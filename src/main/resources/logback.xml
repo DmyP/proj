@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<configuration scan="true" scanPeriod="30 seconds">
+
+    <!-- To enable JMX Management -->
+    <jmxConfigurator/>
+
+    <appender name="console" class="ch.qos.logback.core.ConsoleAppender">
+        <encoder>
+            <charset>UTF-8</charset>
+            <pattern>%-5level %logger{0} [%date:%file:%line] %msg%n</pattern>
+        </encoder>
+    </appender>
+
+    <logger name="com.ep.proj" level="debug"/>
+
+    <root level="info">
+        <appender-ref ref="console"/>
+    </root>
+    <root level="debug">
+        <appender-ref ref="console"/>
+    </root>
+
+</configuration>
