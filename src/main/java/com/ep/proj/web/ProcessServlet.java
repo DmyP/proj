@@ -1,8 +1,7 @@
 package com.ep.proj.web;
 
-import com.ep.proj.controller.ProcessController;
+import com.ep.proj.controller.ProcessControllerImpl;
 import com.ep.proj.model.Position;
-import com.ep.proj.model.Role;
 import com.ep.proj.model.Process;
 import org.slf4j.Logger;
 
@@ -12,20 +11,19 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
-import java.time.LocalDate;
 import java.util.Arrays;
 
 import static org.slf4j.LoggerFactory.getLogger;
 
 @WebServlet("/processes")
 public class ProcessServlet extends HttpServlet {
-    private ProcessController processController;
+    private ProcessControllerImpl processControllerImpl;
     private static final Logger log = getLogger(ProcessServlet.class);
 
     @Override
     public void init() throws ServletException {
         super.init();
-        processController = new ProcessController();
+        processControllerImpl = new ProcessControllerImpl();
     }
 
     @Override
@@ -35,21 +33,21 @@ public class ProcessServlet extends HttpServlet {
         String action = request.getParameter("action");
         switch (action == null ? "all" : action) {
             case "delete":
-                processController.delete(Integer.valueOf(request.getParameter("id")));
+                processControllerImpl.delete(Integer.valueOf(request.getParameter("id")));
                 response.sendRedirect("processes");
                 break;
             case "create":
             case "update":
                 final Process process = action.equals("create") ?
                         new Process(null,"", new Position[0]) :
-                        processController.get(Integer.valueOf(request.getParameter("id")));
+                        processControllerImpl.get(Integer.valueOf(request.getParameter("id")));
                 request.setAttribute("process", process);
                 request.setAttribute("positions", Position.values());
                 request.getRequestDispatcher("/WEB-INF/jsp/process.jsp").forward(request, response);
                 break;
             case "all":
             default:
-                request.setAttribute("processes", processController.getAll());
+                request.setAttribute("processes", processControllerImpl.getAll());
                 request.setAttribute("positions", Position.values());
                 request.getRequestDispatcher("/WEB-INF/jsp/processes.jsp").forward(request, response);
                 break;
@@ -70,9 +68,9 @@ public class ProcessServlet extends HttpServlet {
                 positionsArray);
 
         if (id.isEmpty()) {
-            processController.create(process);
+            processControllerImpl.create(process);
         } else {
-            processController.update(process, Integer.parseInt(id));
+            processControllerImpl.update(process, Integer.parseInt(id));
         }
         response.sendRedirect("processes");
     }

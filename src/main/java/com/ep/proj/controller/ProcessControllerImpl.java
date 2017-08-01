@@ -1,5 +1,6 @@
 package com.ep.proj.controller;
 
+import com.ep.proj.model.BaseEntity;
 import com.ep.proj.model.Process;
 import com.ep.proj.repository.ProcessRepository;
 import com.ep.proj.repository.mock.InMemoryProcessRepository;
@@ -10,18 +11,19 @@ import java.util.List;
 
 import static org.slf4j.LoggerFactory.getLogger;
 
-public class ProcessController {
+public class ProcessControllerImpl implements Controller{
     private final ProcessRepository repository;
     private static final Logger log = getLogger(ProcessRepository.class);
 
-    public ProcessController() {
+    public ProcessControllerImpl() {
         this.repository = new InMemoryProcessRepository();
     }
 
-    public ProcessController(ProcessRepository repository) {
+    public ProcessControllerImpl(ProcessRepository repository) {
         this.repository = repository;
     }
 
+    @Override
     public List<Process> getAll()  throws NotFoundException {
         log.debug("GET ALL PROCESS");
 
@@ -33,17 +35,19 @@ public class ProcessController {
         }
     }
 
+    @Override
     public Process get(int id) throws NotFoundException {
         log.debug("GET PROCESS BY ID");
 
-        Process u = repository.get(id);
-        if (u == null) {
+        Process returnProcess = repository.get(id);
+        if (returnProcess == null) {
             throw new NotFoundException("Error getting process");
         } else {
-            return u;
+            return returnProcess;
         }
     }
 
+    @Override
     public boolean delete(int id) throws NotFoundException {
         log.debug("DELETE PROCESS BY ID");
 
@@ -54,24 +58,31 @@ public class ProcessController {
         }
     }
 
-    public void update(Process process, int id) throws NotFoundException {
+    @Override
+    public Process update(BaseEntity process, int id) throws NotFoundException {
         log.debug("UPDATE PROCESS BY ID");
-
+        Process returnedProcess;
         if (process.getId() == id){
-            repository.save(process);
+            returnedProcess = repository.save((Process) process);
         } else {
             throw new NotFoundException("Process id incorrect");
         }
+        if (returnedProcess == null) {
+            throw new NotFoundException("Process id incorrect");
+        } else {
+            return returnedProcess;
+        }
     }
 
-    public Process create(Process process) throws NotFoundException {
+    @Override
+    public Process create(BaseEntity process) throws NotFoundException {
         log.debug("CREATE PROCESS");
 
-        Process u = repository.save(process);
-        if (u == null) {
+        Process returnProcess = repository.save((Process) process);
+        if (returnProcess == null) {
             throw new NotFoundException("Error creation process");
         } else {
-            return u;
+            return returnProcess;
         }
     }
 }

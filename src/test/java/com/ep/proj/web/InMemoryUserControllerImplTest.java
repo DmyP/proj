@@ -1,6 +1,6 @@
 package com.ep.proj.web;
 
-import com.ep.proj.controller.UserController;
+import com.ep.proj.controller.UserControllerImpl;
 import com.ep.proj.repository.mock.InMemoryUserRepository;
 import com.ep.proj.model.Position;
 import com.ep.proj.model.Role;
@@ -14,12 +14,12 @@ import java.time.LocalDate;
 import java.util.List;
 
 
-public class InMemoryUserControllerTest {
-    private static UserController controller;
+public class InMemoryUserControllerImplTest {
+    private static UserControllerImpl controller;
 
     @Before
     public void setUp() throws Exception {
-        controller = new UserController(new InMemoryUserRepository());
+        controller = new UserControllerImpl(new InMemoryUserRepository());
     }
 
     @Test

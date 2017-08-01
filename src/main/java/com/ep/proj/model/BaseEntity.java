@@ -1,6 +1,6 @@
 package com.ep.proj.model;
 
-abstract class BaseEntity {
+public abstract class BaseEntity {
     private Integer id;
     private String name;
 

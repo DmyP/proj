@@ -1,6 +1,6 @@
 package com.ep.proj.web;
 
-import com.ep.proj.controller.UserController;
+import com.ep.proj.controller.UserControllerImpl;
 import com.ep.proj.model.Position;
 import com.ep.proj.model.Role;
 import com.ep.proj.model.User;
@@ -18,13 +18,13 @@ import static org.slf4j.LoggerFactory.getLogger;
 
 @WebServlet("/users")
 public class UserServlet extends HttpServlet {
-    private UserController userController;
+    private UserControllerImpl userControllerImpl;
     private static final Logger log = getLogger(UserServlet.class);
 
     @Override
     public void init() throws ServletException {
         super.init();
-        userController = new UserController();
+        userControllerImpl = new UserControllerImpl();
     }
 
     @Override
@@ -34,14 +34,14 @@ public class UserServlet extends HttpServlet {
         String action = request.getParameter("action");
         switch (action == null ? "all" : action) {
             case "delete":
-                userController.delete(Integer.valueOf(request.getParameter("id")));
+                userControllerImpl.delete(Integer.valueOf(request.getParameter("id")));
                 response.sendRedirect("users");
                 break;
             case "create":
             case "update":
                 final User user = action.equals("create") ?
                         new User(null,"", "", "", null, null, false, LocalDate.now()) :
-                        userController.get(Integer.valueOf(request.getParameter("id")));
+                        userControllerImpl.get(Integer.valueOf(request.getParameter("id")));
                 request.setAttribute("user", user);
                 request.setAttribute("roles", Role.values());
                 request.setAttribute("positions", Position.values());
@@ -49,7 +49,7 @@ public class UserServlet extends HttpServlet {
                 break;
             case "all":
             default:
-                request.setAttribute("users", userController.getAll());
+                request.setAttribute("users", userControllerImpl.getAll());
                 request.getRequestDispatcher("/WEB-INF/jsp/users.jsp").forward(request, response);
                 break;
         }
@@ -71,9 +71,9 @@ public class UserServlet extends HttpServlet {
                 LocalDate.parse(request.getParameter("date")));
 
         if (id.isEmpty()) {
-            userController.create(user);
+            userControllerImpl.create(user);
         } else {
-            userController.update(user, Integer.parseInt(id));
+            userControllerImpl.update(user, Integer.parseInt(id));
         }
         response.sendRedirect("users");
     }
