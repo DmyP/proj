@@ -8,7 +8,7 @@
   <hr>
   <ul>
       <li><a href="users">Users</a></li>
-      <li><a href="process">Process</a></li>
+      <li><a href="processes">Process</a></li>
   </ul>
   </body>
 </html>

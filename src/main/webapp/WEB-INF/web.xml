@@ -4,23 +4,5 @@
          xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/javaee http://xmlns.jcp.org/xml/ns/javaee/web-app_3_1.xsd"
          version="3.1">
     <display-name>com.ep.proj</display-name>
-    <servlet>
-        <servlet-name>userServlet</servlet-name>
-        <servlet-class>com.ep.proj.web.UserServlet</servlet-class>
-        <load-on-startup>0</load-on-startup>
-    </servlet>
-    <servlet-mapping>
-        <servlet-name>userServlet</servlet-name>
-        <url-pattern>/users</url-pattern>
-    </servlet-mapping>
 
-    <servlet>
-        <servlet-name>processServlet</servlet-name>
-        <servlet-class>com.ep.proj.web.ProcessServlet</servlet-class>
-        <load-on-startup>0</load-on-startup>
-    </servlet>
-    <servlet-mapping>
-        <servlet-name>processServlet</servlet-name>
-        <url-pattern>/process</url-pattern>
-    </servlet-mapping>
 </web-app>

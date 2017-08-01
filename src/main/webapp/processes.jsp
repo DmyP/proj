@@ -3,14 +3,14 @@
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 <html>
 <head>
-    <title>User list</title>
+    <title>Processes list</title>
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
 <section>
     <h3><a href="index.jsp">Home</a></h3>
     <h2>Process list</h2>
-    <a href="process?action=create">Add Process</a>
+    <a href="processes?action=create">Add Process</a>
     <hr/>
     <table border="1" cellpadding="8" cellspacing="0">
         <thead>
@@ -26,8 +26,8 @@
                     <td>${process.id}</td>
                     <td>${process.name}</td>
                     <td>${process.positions}</td>
-                    <td><a href="process?action=update&id=${user.id}&roles=">Update</a></td>
-                    <td><a href="process?action=delete&id=${user.id}">Delete</a></td>
+                    <td><a href="processes?action=update&id=${process.id}">Update</a></td>
+                    <td><a href="processes?action=delete&id=${process.id}">Delete</a></td>
                 </tr>
         </c:forEach>
     </table>
