@@ -1,4 +1,4 @@
-package com.ep.proj.web;
+package com.ep.proj.controller;
 
 import com.ep.proj.controller.ProcessControllerImpl;
 import com.ep.proj.model.Position;
@@ -36,10 +36,10 @@ public class InMemoryProcessControllerImplTest {
 
     @Test
     public void testGetAll() throws Exception {
-        List<Process> processs1 = processControllerImpl.getAll();
-        List<Process> processs2 = processControllerImpl.getAll();
-        Assert.assertEquals(processs1.size(), processs2.size());
-        Assert.assertEquals(processs1.get(1), processs2.get(1));
+        List<Process> process1 = processControllerImpl.getAll();
+        List<Process> process2 = processControllerImpl.getAll();
+        Assert.assertEquals(process1.size(), process2.size());
+        Assert.assertEquals(process1.get(1), process2.get(1));
     }
 
     @Test

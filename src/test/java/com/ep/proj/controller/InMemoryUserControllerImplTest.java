@@ -1,4 +1,4 @@
-package com.ep.proj.web;
+package com.ep.proj.controller;
 
 import com.ep.proj.controller.UserControllerImpl;
 import com.ep.proj.repository.mock.InMemoryUserRepository;
