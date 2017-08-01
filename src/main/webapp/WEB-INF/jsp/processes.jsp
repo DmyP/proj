@@ -15,9 +15,9 @@
     <table border="1" cellpadding="8" cellspacing="0">
         <thead>
         <tr>
-            <th>id</th>
-            <th>name</th>
-            <th>process</th>
+            <th>Process id</th>
+            <th>Process name</th>
+            <th>Positions needed</th>
             <th colspan="2">Action</th>
         </tr>
         </thead>

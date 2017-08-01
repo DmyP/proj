@@ -13,6 +13,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 import java.time.LocalDate;
+import java.util.Arrays;
 
 import static org.slf4j.LoggerFactory.getLogger;
 
@@ -61,9 +62,12 @@ public class ProcessServlet extends HttpServlet {
 
         request.setCharacterEncoding("UTF-8");
         String id = request.getParameter("id");
+        String[] positions = request.getParameterValues("positions");
+        Position[] positionsArray = Arrays.stream(positions).map(Position::valueOf).toArray(Position[]::new);
+
         Process process = new Process(id.isEmpty() ? null : Integer.valueOf(id),
                 request.getParameter("name"),
-                (Position[]) request.getAttribute("positions"));
+                positionsArray);
 
         if (id.isEmpty()) {
             processController.create(process);
