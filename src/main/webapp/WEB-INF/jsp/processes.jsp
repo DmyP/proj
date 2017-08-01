@@ -4,7 +4,7 @@
 <html>
 <head>
     <title>Processes list</title>
-    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="resources/style.css">
 </head>
 <body>
 <section>
@@ -25,7 +25,12 @@
             <jsp:useBean id="process" type="com.ep.proj.model.Process"/>
                     <td>${process.id}</td>
                     <td>${process.name}</td>
-                    <td>${process.positions}</td>
+                    <td>
+                        <jsp:useBean id="positions" type="com.ep.proj.model.Position[]" scope="request"/>
+                        <c:forEach items="${positions}" var="position">
+                            <input type="checkbox" name="positions" value="${position}"  ${process.findPosition(position) ? 'checked' : ''}>${position}
+                        </c:forEach>
+                    </td>
                     <td><a href="processes?action=update&id=${process.id}">Update</a></td>
                     <td><a href="processes?action=delete&id=${process.id}">Delete</a></td>
                 </tr>

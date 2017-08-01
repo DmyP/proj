@@ -8,6 +8,13 @@ public class Process extends BaseEntity{
         this.positions = positions;
     }
 
+    public boolean findPosition(Position position){
+        for (Position posTemp : positions) {
+            if (position == posTemp) return true;
+        }
+        return false;
+    }
+
     public Position[] getPositions() {
         return positions;
     }

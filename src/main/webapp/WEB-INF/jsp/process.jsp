@@ -4,7 +4,7 @@
 <html>
 <head>
     <title>Process</title>
-    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="resources/style.css">
 </head>
 <body>
 <section>
@@ -25,12 +25,10 @@
             <dd>
                 <jsp:useBean id="positions" type="com.ep.proj.model.Position[]" scope="request"/>
                         <c:forEach items="${positions}" var="position">
-                            <dd> ${position}</dd>
+                           <input type="checkbox" name="positions" value="${position}"  ${process.findPosition(position) ? 'checked' : ''}>${position}
                         </c:forEach>
             </dd>
         </dl>
-
-
         <button>Save</button>
         <button onclick="window.history.back()">Cancel</button>
     </form>

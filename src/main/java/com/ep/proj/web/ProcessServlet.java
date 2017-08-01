@@ -44,12 +44,13 @@ public class ProcessServlet extends HttpServlet {
                         processController.get(Integer.valueOf(request.getParameter("id")));
                 request.setAttribute("process", process);
                 request.setAttribute("positions", Position.values());
-                request.getRequestDispatcher("/process.jsp").forward(request, response);
+                request.getRequestDispatcher("/WEB-INF/jsp/process.jsp").forward(request, response);
                 break;
             case "all":
             default:
                 request.setAttribute("processes", processController.getAll());
-                request.getRequestDispatcher("/processes.jsp").forward(request, response);
+                request.setAttribute("positions", Position.values());
+                request.getRequestDispatcher("/WEB-INF/jsp/processes.jsp").forward(request, response);
                 break;
         }
     }

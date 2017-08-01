@@ -45,12 +45,12 @@ public class UserServlet extends HttpServlet {
                 request.setAttribute("user", user);
                 request.setAttribute("roles", Role.values());
                 request.setAttribute("positions", Position.values());
-                request.getRequestDispatcher("/user.jsp").forward(request, response);
+                request.getRequestDispatcher("/WEB-INF/jsp/user.jsp").forward(request, response);
                 break;
             case "all":
             default:
                 request.setAttribute("users", userController.getAll());
-                request.getRequestDispatcher("/users.jsp").forward(request, response);
+                request.getRequestDispatcher("/WEB-INF/jsp/users.jsp").forward(request, response);
                 break;
         }
     }
