@@ -70,15 +70,14 @@ public class SpecificationServlet extends HttpServlet {
         String[] processes = request.getParameterValues("processes");
         List<Process> list = new ArrayList<>();
         for (String process : processes) {
-            Process process1 = processControllerImpl.getForName(process);
+            Process process1 = (Process) processControllerImpl.getForName(process);
             list.add(process1);
         }
         Process[] processesArray = list.toArray(new Process[list.size()]);
 
 
         Specification specification = new Specification(id.isEmpty() ? null : Integer.valueOf(id),
-                request.getParameter("name"),
-                processes);
+                request.getParameter("name"), processes);
 
         if (id.isEmpty()) {
             specificationControllerImpl.create(specification);

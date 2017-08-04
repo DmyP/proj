@@ -16,4 +16,5 @@ public class Specification extends BaseEntity{
     public void setProcesses(Process[] processes) {
         this.processes = processes;
     }
+
 }

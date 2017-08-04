@@ -7,6 +7,7 @@ import com.ep.proj.repository.mock.InMemoryProcessRepository;
 import com.ep.proj.utils.NotFoundException;
 import org.slf4j.Logger;
 
+import java.util.Arrays;
 import java.util.List;
 
 import static org.slf4j.LoggerFactory.getLogger;
@@ -84,5 +85,12 @@ public class ProcessControllerImpl implements Controller{
         } else {
             return returnProcess;
         }
+    }
+
+    @Override
+    public Process getForName(String name) {
+         repository
+
+        return null;
     }
 }

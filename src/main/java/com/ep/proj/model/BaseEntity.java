@@ -1,8 +1,8 @@
 package com.ep.proj.model;
 
 public abstract class BaseEntity {
-    private Integer id;
-    private String name;
+    protected Integer id;
+    protected String name;
 
     BaseEntity(Integer id, String name) {
         this.id = id;

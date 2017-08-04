@@ -85,4 +85,9 @@ public class SpecificationControllerImpl implements Controller {
             return returnSpecification;
         }
     }
+
+    @Override
+    public Specification getForName(String name) {
+        return (Specification) repository.getForName(name);
+    }
 }

@@ -1,5 +1,6 @@
 package com.ep.proj.repository.mock;
 
+import com.ep.proj.model.BaseEntity;
 import com.ep.proj.model.Specification;
 import com.ep.proj.repository.SpecificationRepository;
 
@@ -40,5 +41,12 @@ public class InMemorySpecificationRepository implements SpecificationRepository{
     @Override
     public List<Specification> getAll() {
         return new ArrayList<>(repository.values());
+    }
+
+    @Override
+    public Specification getForName(String name) {
+        for (Map.Entry<Integer, Specification> entry: repository.entrySet()){
+        }
+        return null;
     }
 }

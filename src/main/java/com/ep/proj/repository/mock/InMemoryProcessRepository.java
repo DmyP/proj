@@ -41,4 +41,10 @@ public class InMemoryProcessRepository implements ProcessRepository {
     public List<Process> getAll() {
         return new ArrayList<>(repository.values());
     }
+
+    @Override
+    public Process getForName(String name) {
+        //repository.entrySet().stream().filter(entry -> entry.getValue().getPositions(), name).map();
+        return null;
+    }
 }

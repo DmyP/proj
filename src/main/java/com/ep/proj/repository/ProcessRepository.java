@@ -11,4 +11,6 @@ public interface ProcessRepository {
     Process get(int id);
 
     List<Process> getAll();
+
+    Process getForName(String name);
 }
